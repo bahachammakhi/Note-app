@@ -43,7 +43,10 @@ class App extends React.Component {
 
   this.database.on('child_removed', snap =>{
     for(var i=0;i < previousNotes.length; i++){
-      previousNotes.splice(i,1);
+      if(previousNotes[i].id === snap.key){
+        previousNotes.splice(i, 1);
+      }
+      
     }
     this.setState({
       notes : previousNotes
