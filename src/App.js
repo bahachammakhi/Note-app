@@ -1,4 +1,4 @@
-import React from 'react';
+import React , {Component}from 'react';
 import './App.css';
 import firebase from 'firebase';
 import app from 'firebase/app'
@@ -6,8 +6,8 @@ import 'firebase/database';
 import "./bootstrap-4.3.1-dist/css/bootstrap.min.css"
 import NavBar from "./components/NavBar"
 import Footer from "./components/Footer"
-import NoteForm from "./components/NoteForm"
-import NoteItem from "./components/NoteItem"
+import Note from './components/Note';
+import NoteForm from './components/NoteForm';
 var firebaseConfig = {
   apiKey: "AIzaSyC6OH3f6TD-y3XIcRk2zQWQ2J64DaZpU5I",
   authDomain: "my-note-app-8edfd.firebaseapp.com",
@@ -17,72 +17,91 @@ var firebaseConfig = {
   messagingSenderId: "53078311775",
   appId: "1:53078311775:web:171a4d3d41ea3b46"
 };
-class App extends React.Component {
-  constructor(props){
-    super(props)
-    this.app = firebase.initializeApp(firebaseConfig)
-  this.database = this.app.database().ref().child('notes')
-     // We're going to setup the React state of our component
-  this.state ={
-    notes : [{noteTitle: "newNoteTitle",  notePrag : "newNotePrag"},{noteTitle: "test1",  notePrag : "test2"},{noteTitle: "newNoteTitle",  notePrag : "newNotePrag"}]
-  }
-  
-  }
-  componentDidMount(){
-  const previousNotes = this.state.notes
-  // DataSnapshot
-  this.database.on('child_added', snap => {
-    previousNotes.push({
-      id: snap.key,
-      noteTitle: snap.val().noteTitle,
-      notePrag: snap.val().notePrag,
-    })
-    this.setState({
-      notes : previousNotes
-    })
-  })
+class App extends Component {
 
-  this.database.on('child_removed', snap =>{
-    for(var i=0;i < previousNotes.length; i++){
-      if(previousNotes[i].id === snap.key){
-        previousNotes.splice(i, 1);
-      }
-      
+  constructor(props){
+    super(props);
+    this.addNote = this.addNote.bind(this);
+    this.removeNote = this.removeNote.bind(this);
+
+    this.app = firebase.initializeApp(firebaseConfig);
+    this.database = this.app.database().ref().child('notes');
+
+    // We're going to setup the React state of our component
+    this.state = {
+      notes: [],
     }
-    this.setState({
-      notes : previousNotes
+  }
+
+  componentWillMount(){
+    const previousNotes = this.state.notes;
+
+    // DataSnapshot
+    this.database.on('child_added', snap => {
+      previousNotes.push({
+        id: snap.key,
+        noteTitle: snap.val().noteTitle,
+        notePrag: snap.val().notePrag,
+      })
+
+      this.setState({
+        notes: previousNotes
+      })
     })
-  })
-}
-addNote(newNoteTitle , newNotePrag){
-  this.database.push.set({ noteTitle: newNoteTitle,  notePrag : newNotePrag})
- 
-}
-removeNote(noteId){
-  this.database.child(noteId).remove()
-}
-  render(){
-    return(
+
+    this.database.on('child_removed', snap => {
+      for(var i=0; i < previousNotes.length; i++){
+        if(previousNotes[i].id === snap.key){
+          previousNotes.splice(i, 1);
+        }
+      }
+
+      this.setState({
+        notes: previousNotes
+      })
+    })
+  }
+
+  addNote(note,note1){
+    this.database.push().set({ noteTitle: note, notePrag : note1});
+  }
+
+  removeNote(noteId){
+    console.log("from the parent: " + noteId);
+    this.database.child(noteId).remove();
+  }
+
+  render() {
+    return (
       <div>
-        <NavBar />
-        <NoteForm addNote={this.addNote} />
-        <div>
-        {
+         <NavBar />
+        <div className="container">
+         <div className="row" >
+         <div className="col w-25"> <NoteForm addNote={this.addNote} /> </div>
+         <div className="col-6 mt-3" >
+           {
             this.state.notes.map((note) => {
               return (
-                <NoteItem key={note.id} 
-                noteTitle={note.noteTitle} 
-                notePrag = {note.notePrag}
+                <Note noteTitle={note.noteTitle} 
+                notePrag={note.notePrag} 
                 noteId={note.id} 
-                
+                key={note.id} 
                 removeNote ={this.removeNote}/>
               )
             })
           }
-          </div>      
-        <Footer />
+         </div>
+         
+           </div> 
+           
+        </div>
+         
+          <Footer />
       </div>
-    )
+     
+        
+     
+    );
   }
 }
 
