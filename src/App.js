@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import firebase from 'firebase';
+import app from 'firebase/app'
 import 'firebase/database';
 import "./bootstrap-4.3.1-dist/css/bootstrap.min.css"
 import NavBar from "./components/NavBar"
@@ -23,7 +24,7 @@ class App extends React.Component {
   this.database = this.app.database().ref().child('notes')
      // We're going to setup the React state of our component
   this.state ={
-    notes : []
+    notes : [{noteTitle: "newNoteTitle",  notePrag : "newNotePrag"},{noteTitle: "test1",  notePrag : "test2"},{noteTitle: "newNoteTitle",  notePrag : "newNotePrag"}]
   }
   
   }
@@ -54,7 +55,7 @@ class App extends React.Component {
   })
 }
 addNote(newNoteTitle , newNotePrag){
-  this.database.push().set({ noteTitle: newNoteTitle,  notePrag : newNotePrag})
+  this.database.push.set({ noteTitle: newNoteTitle,  notePrag : newNotePrag})
  
 }
 removeNote(noteId){
@@ -69,10 +70,11 @@ removeNote(noteId){
         {
             this.state.notes.map((note) => {
               return (
-                <NoteItem noteTitle={note.noteTitle} 
+                <NoteItem key={note.id} 
+                noteTitle={note.noteTitle} 
                 notePrag = {note.notePrag}
                 noteId={note.id} 
-                key={note.id} 
+                
                 removeNote ={this.removeNote}/>
               )
             })

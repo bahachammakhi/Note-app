@@ -20,8 +20,6 @@ writeNote(){
     // call a method that sets the noteContent for a note to
     // the value of the input
     this.props.addNote(this.state.newNoteTitle, this.state.newNotePrag);
-    
-
     // Set newNoteContent back to an empty string.
     this.setState({
         newNoteTitle: '',
@@ -60,10 +58,11 @@ writeNote(){
    placeholder="Write note pragraph"
    name="newNotePrag"
    onChange= {this.handleUserInput}
+   value={this.state.newNotePrag}
    />
 </div>
 <button type="button" 
-class="btn btn-secondary ml-5"
+className="btn btn-secondary ml-5"
 onClick={this.writeNote}
 >Add Note</button>
     </nav>

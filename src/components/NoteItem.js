@@ -3,7 +3,7 @@ class NoteItem extends Component{
     constructor(props){
         super(props)
         this.state = {
-              noteTitle: props.noteText,
+              noteTitle: props.noteTitle,
               notePrag: props.notePrag,
               noteId : props.noteId
         }
