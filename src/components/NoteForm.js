@@ -55,7 +55,7 @@ class NoteForm extends Component{
        <div className="input-group-prepend mt-3 ml-3 ">
          <span className="input-group-text" id="inputGroup-sizing-default">Text</span>
        </div>
-       <input type="text"
+       <textarea type="text"
         className="form-control mt-3" 
         aria-label="Sizing example input" 
         aria-describedby="inputGroup-sizing-default"

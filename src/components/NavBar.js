@@ -13,7 +13,9 @@ handleName = () =>{
         name : person
     })
 }
-
+componentDidMount(){
+    this.handleName()
+}
     render(){
         return(
 <div>

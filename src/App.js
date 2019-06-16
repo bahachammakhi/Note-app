@@ -30,14 +30,17 @@ class App extends Component {
     // We're going to setup the React state of our component
     this.state = {
       notes: [],
+      loading : false,
     }
   }
 
   componentWillMount(){
+   
     const previousNotes = this.state.notes;
 
     // DataSnapshot
     this.database.on('child_added', snap => {
+      this.setState({loading: true})
       previousNotes.push({
         id: snap.key,
         noteTitle: snap.val().noteTitle,
@@ -45,7 +48,8 @@ class App extends Component {
       })
 
       this.setState({
-        notes: previousNotes
+        notes: previousNotes,
+        
       })
     })
 
@@ -72,24 +76,27 @@ class App extends Component {
   }
 
   render() {
+    const noteitem = this.state.notes.map((note) => {
+      return (
+        <Note noteTitle={note.noteTitle} 
+        notePrag={note.notePrag} 
+        noteId={note.id} 
+        key={note.id} 
+        removeNote ={this.removeNote}/>
+      )
+    })
+    const loading = <h1 className="text-danger">Loading</h1>
+    const Affiche = this.state.loading ? noteitem : loading 
     return (
       <div>
          <NavBar />
         <div className="container">
-         <div className="row" >
-         <div className="col w-25"> <NoteForm addNote={this.addNote} /> </div>
-         <div className="col-6 mt-3" >
-           {
-            this.state.notes.map((note) => {
-              return (
-                <Note noteTitle={note.noteTitle} 
-                notePrag={note.notePrag} 
-                noteId={note.id} 
-                key={note.id} 
-                removeNote ={this.removeNote}/>
-              )
-            })
-          }
+         <div className="row " >
+         <div className=" w-25 col align-self-center"> <NoteForm addNote={this.addNote} /> </div>
+         </div>
+         <div className="row">
+         <div className=" mt-3 mb-3 col align-self-center" >
+           {Affiche}
          </div>
          
            </div> 
