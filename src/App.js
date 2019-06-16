@@ -23,6 +23,8 @@ class App extends Component {
     super(props);
     this.addNote = this.addNote.bind(this);
     this.removeNote = this.removeNote.bind(this);
+    this.permission = this.permission.bind(this)
+    
 
     this.app = firebase.initializeApp(firebaseConfig);
     this.database = this.app.database().ref().child('notes');
@@ -31,11 +33,12 @@ class App extends Component {
     this.state = {
       notes: [],
       loading : false,
+      permission : false
     }
   }
 
   componentWillMount(){
-   
+   this.permission()
     const previousNotes = this.state.notes;
 
     // DataSnapshot
@@ -45,6 +48,7 @@ class App extends Component {
         id: snap.key,
         noteTitle: snap.val().noteTitle,
         notePrag: snap.val().notePrag,
+        noteTimeAdded: snap.val().noteTimeAdded,
       })
 
       this.setState({
@@ -66,30 +70,41 @@ class App extends Component {
     })
   }
 
-  addNote(note,note1){
-    this.database.push().set({ noteTitle: note, notePrag : note1});
+  addNote(note,note1,note2){
+    this.database.push().set({ noteTitle: note, notePrag : note1 , noteTimeAdded : note2});
   }
 
   removeNote(noteId){
     console.log("from the parent: " + noteId);
     this.database.child(noteId).remove();
   }
+  permission(){
+    let name = prompt('give me your name')
+    let password = prompt('give me your password')
+     name == "owner" && password == "baha" ? this.setState({permission : true , name : name}) : this.setState({permission : false, name : name})
+    
+   
+
+  }
+  
+  
 
   render() {
     const noteitem = this.state.notes.map((note) => {
       return (
         <Note noteTitle={note.noteTitle} 
         notePrag={note.notePrag} 
+        noteTimeAdded={note.noteTimeAdded}
         noteId={note.id} 
         key={note.id} 
         removeNote ={this.removeNote}/>
       )
     })
-    const loading = <h1 className="text-danger">Loading</h1>
+    const loading = <div className="spinner-border"></div>
     const Affiche = this.state.loading ? noteitem : loading 
     return (
       <div>
-         <NavBar />
+        {this.state.permission ? <div><NavBar permission={this.permission}/>
         <div className="container">
          <div className="row " >
          <div className=" w-25 col align-self-center"> <NoteForm addNote={this.addNote} /> </div>
@@ -103,7 +118,8 @@ class App extends Component {
            
         </div>
          
-          <Footer />
+          <Footer /></div> : <div><h1 className="text-center  font-weight-bold text-light permission">Sorry {this.state.name},You dont have permission,ask Baha chammakhi to try it</h1> <button className="btn btn-dark btnpermission " onClick={this.permission}>Try again</button></div>}
+         
       </div>
      
         

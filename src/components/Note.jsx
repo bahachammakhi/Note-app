@@ -7,6 +7,7 @@ class Note extends Component{
         super(props);
         this.noteTitle = props.noteTitle; 
         this.notePrag = props.notePrag
+        this.noteAdded = props.noteTimeAdded
         this.noteId = props.noteId; 
         this.handleRemoveNote = this.handleRemoveNote.bind(this);
     }
@@ -26,6 +27,7 @@ class Note extends Component{
     onClick={() => this.handleRemoveNote(this.noteId)}>
   &times;</span>
 </button>
+<p className="text-right font-weight-light" >{this.noteAdded}</p>
 <h5 className="card-title">{this.noteTitle}</h5>
 <p className="card-text">{this.notePrag}</p>
 </div>
