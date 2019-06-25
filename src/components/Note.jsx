@@ -19,7 +19,7 @@ class Note extends Component{
     render(){
         return(
             
-            <div>
+            <div className="col">
             <div className="card wrapper mt-3 " id="content">
 <div className="card-body ">
  <button type="button" class="close" aria-label="Close">

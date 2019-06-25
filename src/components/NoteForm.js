@@ -37,41 +37,48 @@ class NoteForm extends Component{
 
     render(){
         return(
-            
-            <nav id="sidebar">
-            <div className="input-group mb-3">
-       <div className="input-group-prepend mt-3 ml-3">
-         <span className="input-group-text" id="inputGroup-sizing-default">Title</span>
-       </div>
+            <div className="form-group  ">
+            <div className="container ">
+         <div className="row col mt-3">
+         <label for="textInput">Note title</label>
        <input type="text" 
-       className="form-control mt-3" 
+       className="form-control-lg" 
        aria-label="Sizing example input"
         aria-describedby="inputGroup-sizing-default"
-        placeholder="write note title"
         value={this.state.newNoteTitle}
         onChange={this.handleUserInput}
         name="newNoteTitle"
         />
-     </div>
-     <div className="input-group mb-3">
-       <div className="input-group-prepend mt-3 ml-3 ">
-         <span className="input-group-text" id="inputGroup-sizing-default">Text</span>
-       </div>
-       <textarea type="text"
-        className="form-control mt-3" 
+        
+         </div>
+         <div className="row col mt-3">
+         <label for="textarea">Note body</label>
+         <textarea type="text"
+        className="form-control-lg " 
         aria-label="Sizing example input" 
         aria-describedby="inputGroup-sizing-default"
-        placeholder="Write note pragraph"
         name="newNotePrag"
         onChange= {this.handleUserInput}
         value={this.state.newNotePrag}
         />
-     </div>
-     <button type="button" 
-     className="btn btn-secondary ml-5"
+        
+       
+         </div>
+       <div className="row col mt-3 "> 
+        <button type="submit" 
+     className="btn btn-outline-dark"
      onClick={this.writeNote}
-     >Add Note</button>
-         </nav>
+     >Add Note
+     
+     </button>
+        </div>
+     </div>
+     </div>
+          
+   
+    
+     
+        
         )
     }
 }

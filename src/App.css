@@ -1,5 +1,11 @@
 .sticky-footer {
-  flex-shrink: none;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: red;
+  color: white;
+  text-align: center;
 }
 body {
   background: #007bff;
@@ -14,7 +20,9 @@ footer {
   color: white;
   text-align: center;
 }
-
+.modall{
+  margin-left: 40%;
+}
 .card{
   width: 18rem;
 }
@@ -23,4 +31,9 @@ footer {
 }
 .btnpermission{
   margin-left : 47%;
+}
+.stickybtn {
+  position: fixed;
+    bottom: 10%;
+    right: 50%;
 }
