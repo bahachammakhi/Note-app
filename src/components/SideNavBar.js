@@ -5,7 +5,7 @@ class SideNavBar extends React.Component{
  constructor(){
      super()
      this.state={
-         openNav: "push",
+         openNav: "",
      }
  }
  componentWillReceiveProps(nextProps) {

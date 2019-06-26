@@ -41,6 +41,7 @@ class App extends Component {
       openNav : "",
   
     }
+
   }
 
   componentWillMount(){
@@ -92,9 +93,17 @@ class App extends Component {
    
 
   }
-  openNav=()=>{
-    this.setState({openNav:"push"})
+  handleCloseNoteform=() =>{
+    this.setState({
+      open: false
+    })
+    
   }
+ openNavSide =()=>{
+   this.setState({
+     openNav :"push"
+   })
+ }
  
 closeNav=()=>{
   this.setState({openNav:""})
@@ -119,17 +128,18 @@ closeNav=()=>{
     return (
       <div>
         
-        <span onClick={this.openNav}>open</span>
+       
         <div className="sidenav">  
       <SideNav openNav={this.state.openNav} />
         </div> 
         <div className="main"  onClick={this.closeNav} >
         <div className="container">
          <div className="row " >
-         <div className=" w-25 col align-self-center"> <SimpleModal open={this.state.open} addNote={this.addNote} /></div>
+         <div className=" w-25 col align-self-center"> <SimpleModal handleCloseNoteform={this.handleCloseNoteform} open={this.state.open} addNote={this.addNote} /></div>
          </div>
-         
-         <div className=" margin mb-3 col align-self-center " >
+         <button className="btn btn-danger" onClick={this.openNavSide} >Aman ekhdeemmmm</button>
+         <div className=" margin mb-3 col  " >
+        
            {Affiche}
          </div>
          </div>
@@ -146,7 +156,7 @@ closeNav=()=>{
 
            </div>
            
-          
+        
         </div>
          
           <Footer /></div> 

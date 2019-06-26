@@ -39,10 +39,10 @@ class NoteForm extends Component{
         return(
             <div className="form-group  ">
             <div className="container ">
-         <div className="row col mt-3">
+         <div className="row col mt-3 ">
          <label for="textInput">Note title</label>
        <input type="text" 
-       className="form-control-lg" 
+       className="form-control-sm border-danger" 
        aria-label="Sizing example input"
         aria-describedby="inputGroup-sizing-default"
         value={this.state.newNoteTitle}
@@ -51,10 +51,10 @@ class NoteForm extends Component{
         />
         
          </div>
-         <div className="row col mt-3">
+         <div className="row col mt-3 ">
          <label for="textarea">Note body</label>
          <textarea type="text"
-        className="form-control-lg " 
+        className="form-control-sm border-danger " 
         aria-label="Sizing example input" 
         aria-describedby="inputGroup-sizing-default"
         name="newNotePrag"
@@ -66,7 +66,7 @@ class NoteForm extends Component{
          </div>
        <div className="row col mt-3 "> 
         <button type="submit" 
-     className="btn btn-outline-dark"
+     className="btn btn-outline-danger"
      onClick={this.writeNote}
      >Add Note
      

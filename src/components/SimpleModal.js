@@ -17,11 +17,7 @@ class SimpleModal extends React.Component {
       this.setState({ open : nextProps.open });
     }
 }
-handleClose=() =>{
-  this.setState({
-    open: false
-  })
-}
+
 render(){
   return (
      <div> 
@@ -32,15 +28,14 @@ render(){
         onClose={this.props.handleClose}
       >
       
-          <div className="modall card">
-   <div className="modal-header"> 
+          <div className="card mt-3 border-danger modall ">
+   
    <div class="modal-header">
         <h5 className="modal-title">Add note</h5>
-        <button type="button" className="close" onClick={this.handleClose} >
+        <button type="button" className="close" onClick={this.props.handleCloseNoteform} >
           <span >&times;</span>
         </button>
       </div>
-   </div>
    
           <NoteForm  addNote={this.props.addNote} />
         </div>
