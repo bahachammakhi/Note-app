@@ -8,7 +8,9 @@
     "@trendmicro/react-sidenav": "^0.4.5",
     "firebase": "^6.2.0",
     "react": "^16.8.6",
+    "react-collapse": "^4.0.3",
     "react-dom": "^16.8.6",
+    "react-motion": "^0.5.2",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1"
   },

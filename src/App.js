@@ -9,6 +9,7 @@ import NavBar from "./components/NavBar"
 import Footer from "./components/Footer"
 import Note from './components/Note';
 import NoteForm from './components/NoteForm';
+import {UnmountClosed} from 'react-collapse';
 import SimpleModal from "./components/SimpleModal"
 import SideNav from './components/SideNavBar';
 var firebaseConfig = {
@@ -27,8 +28,6 @@ class App extends Component {
     this.addNote = this.addNote.bind(this);
     this.removeNote = this.removeNote.bind(this);
     this.permission = this.permission.bind(this)
-    
-
     this.app = firebase.initializeApp(firebaseConfig);
     this.database = this.app.database().ref().child('notes');
 
@@ -39,7 +38,9 @@ class App extends Component {
       permission : true,
       open : false,
       openNav : "",
-  
+      main : "",
+      noteO : true,
+      todoOpen : false,
     }
 
   }
@@ -99,14 +100,23 @@ class App extends Component {
     })
     
   }
- openNavSide =()=>{
-   this.setState({
-     openNav :"push"
-   })
- }
- 
+handleNav=()=>{
+  this.setState({openNav : "push",main :"pushmain"})
+}
 closeNav=()=>{
-  this.setState({openNav:""})
+  this.setState({openNav:"",main:""})
+}
+handleTodoComponent = () =>{
+  this.setState({
+    noteO : false,
+    todoOpen : true
+  })
+}
+handleNoteComponent = () =>{
+  this.setState({
+    noteO : true,
+    todoOpen :false
+  })
 }
   render() {
     const noteitem = this.state.notes.map((note) => {
@@ -126,21 +136,19 @@ closeNav=()=>{
     const loading = <div className="spinner-border"></div>
     const Affiche = this.state.loading ? <div className="card-columns" > {noteitem}</div>  : loading 
     return (
-      <div>
-        
-       
-        <div className="sidenav">  
-      <SideNav openNav={this.state.openNav} />
+      <div className="body">
+         <div className="sidenav" >  
+      <SideNav openNav={this.state.openNav} note={this.handleNoteComponent} todo={this.handleTodoComponent} />
         </div> 
-        <div className="main"  onClick={this.closeNav} >
+        <NavBar openNav={this.handleNav} closeNav={this.closeNav} open={this.state.openNav} />
+       <UnmountClosed isOpened={this.state.noteO}>
+        <div className="notePage"  className={this.state.main} onClick={this.closeNav} >
         <div className="container">
          <div className="row " >
          <div className=" w-25 col align-self-center"> <SimpleModal handleCloseNoteform={this.handleCloseNoteform} open={this.state.open} addNote={this.addNote} /></div>
          </div>
-         <button className="btn btn-danger" onClick={this.openNavSide} >Aman ekhdeemmmm</button>
-         <div className=" margin mb-3 col  " >
-        
-           {Affiche}
+         <div  className=" margin mb-3 col  " >
+          {Affiche}
          </div>
          </div>
 
@@ -158,7 +166,12 @@ closeNav=()=>{
            
         
         </div>
-         
+        </UnmountClosed>
+        <UnmountClosed isOpened={this.state.todoOpen} >
+        <div className="todolist" className={this.state.main} onClick={this.closeNav} >
+    <h1 className="text-white" >Todo</h1>
+        </div>
+        </UnmountClosed>
           <Footer /></div> 
     
      

@@ -10,7 +10,7 @@ class SideNavBar extends React.Component{
  }
  componentWillReceiveProps(nextProps) {
     // You don't have to do this check first, but it can help prevent an unneeded render
-     if (nextProps.open !== this.state.openNav) {
+     if (nextProps.openNav !== this.state.openNav) {
        this.setState({ openNav : nextProps.openNav });
      }
  }
@@ -21,7 +21,8 @@ class SideNavBar extends React.Component{
             <div>
 <nav className="sidenav"  className={this.state.openNav} >
 <ul>
-    <li className="nav-item"><a>Link</a></li>
+    <li className="nav-item"><a onClick={this.props.note} >Notes</a></li>
+    <li className="nav-item"><a  onClick={this.props.todo} >TodoList</a></li>
 </ul>
 </nav>
 </div>
