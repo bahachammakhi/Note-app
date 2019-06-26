@@ -20,10 +20,10 @@ class SideNavBar extends React.Component{
             <div onClick={this.closeNav} > clickk heree</div>
             <div>
 <nav className="sidenav"  className={this.state.openNav} >
-<ul>
-    <li className="nav-item"><a onClick={this.props.note} >Notes</a></li>
-    <li className="nav-item"><a  onClick={this.props.todo} >TodoList</a></li>
-</ul>
+
+<a onClick={this.props.note} >Notes</a>
+ <a  onClick={this.props.todo} >TodoList</a>
+
 </nav>
 </div>
             </div>

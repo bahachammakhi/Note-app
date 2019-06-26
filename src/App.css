@@ -5,6 +5,10 @@
   width: 100%;
   text-align: center;
 }
+.center{
+  float: none;
+  margin: 0 auto;
+}
 footer {
   
   left: 0;
@@ -53,16 +57,7 @@ margin-left : 40%;
 
 /* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
-  color: #f1f1f1;
-}
-
-/* Position and style the close button (top right corner) */
-.sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
+ background-color: black;
 }
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
@@ -75,6 +70,7 @@ margin-left : 40%;
   transition: margin-left .5s;
   padding: 20px;
   background-color: black;
+  margin-left: 40%;
 }
 /* class for collapse */
 .push{
@@ -104,5 +100,33 @@ margin-left : 40%;
     margin-left: 10%;
     width: 60%;
     height: 50%;
+  }
+  .todolist{
+    transition: margin-left .5s;
+    padding: 20px;
+    background-color: black;
+    margin-left: 25%;
+  }
+  ul{
+    list-style: none
+  }
+  .pushmain{
+    margin-left: 0px;
+    transition: 0.5s;
+  }
+  .push{
+    width: 100px;
+  }
+  .sidenav a {
+    padding: 10px 0px 10px 10px;
+    text-decoration: none;
+    font-size: 15px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  .modall{
+   margin-left: 20%;
+   margin-top: 25%;
   }
 }

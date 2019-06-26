@@ -28,7 +28,7 @@ render(){
         onClose={this.props.handleClose}
       >
       
-          <div className="card mt-3 border-danger modall ">
+          <div className="card  border-danger modall ">
    
    <div class="modal-header">
         <h5 className="modal-title">Add note</h5>

@@ -18,7 +18,7 @@ constructor(props){
   <i className="fas fa-grip-lines mr-3" onClick={this.props.open =="push" ? this.props.closeNav : this.props.openNav} ></i>
     <img src={logo} width="50" height="50" alt="" />  ChammakhiNotes
   </a>
-  <form class="form-inline">
+  <form class="form-inline d-none d-lg-block">
     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
   </form>
