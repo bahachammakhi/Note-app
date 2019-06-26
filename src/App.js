@@ -1,6 +1,7 @@
 import React , {Component}from 'react';
 import './App.css';
 import firebase from 'firebase';
+import "@material-ui/core"
 import app from 'firebase/app'
 import 'firebase/database';
 import "./bootstrap-4.3.1-dist/css/bootstrap.min.css"
@@ -9,6 +10,7 @@ import Footer from "./components/Footer"
 import Note from './components/Note';
 import NoteForm from './components/NoteForm';
 import SimpleModal from "./components/SimpleModal"
+import SideNav from './components/SideNavBar';
 var firebaseConfig = {
   apiKey: "AIzaSyC6OH3f6TD-y3XIcRk2zQWQ2J64DaZpU5I",
   authDomain: "my-note-app-8edfd.firebaseapp.com",
@@ -35,7 +37,9 @@ class App extends Component {
       notes: [],
       loading : false,
       permission : true,
-      open : false
+      open : false,
+      openNav : "",
+  
     }
   }
 
@@ -88,9 +92,13 @@ class App extends Component {
    
 
   }
-  
-  
-
+  openNav=()=>{
+    this.setState({openNav:"push"})
+  }
+ 
+closeNav=()=>{
+  this.setState({openNav:""})
+}
   render() {
     const noteitem = this.state.notes.map((note) => {
       return (
@@ -110,17 +118,23 @@ class App extends Component {
     const Affiche = this.state.loading ? <div className="card-columns" > {noteitem}</div>  : loading 
     return (
       <div>
-        {this.state.permission ? <div><NavBar permission={this.permission} name={this.state.name}/>
+        
+        <span onClick={this.openNav}>open</span>
+        <div className="sidenav">  
+      <SideNav openNav={this.state.openNav} />
+        </div> 
+        <div className="main"  onClick={this.closeNav} >
         <div className="container">
          <div className="row " >
          <div className=" w-25 col align-self-center"> <SimpleModal open={this.state.open} addNote={this.addNote} /></div>
          </div>
-         <div className="row">
+         
          <div className=" margin mb-3 col align-self-center " >
            {Affiche}
          </div>
+         </div>
 
-           </div> 
+         
           
 <div className="stickybtn "> 
               <button
@@ -135,9 +149,8 @@ class App extends Component {
           
         </div>
          
-          <Footer /></div> : <div><h1 className="text-center  font-weight-bold text-light permission">Sorry {this.state.name},You dont have permission,ask Baha chammakhi to try it</h1> <button className="btn btn-dark btnpermission " onClick={this.permission}>Try again</button></div>}
-         
-      </div>
+          <Footer /></div> 
+    
      
         
      

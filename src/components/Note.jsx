@@ -20,16 +20,16 @@ class Note extends Component{
         return(
             
             <div className="col">
-            <div className="card wrapper mt-3 " id="content">
+            <div className="card bg-dark wrapper mt-3 " id="content">
 <div className="card-body ">
- <button type="button" class="close" aria-label="Close">
+ <button type="button" class="close text-white" aria-label="Close">
   <span aria-hidden="true"
     onClick={() => this.handleRemoveNote(this.noteId)}>
   &times;</span>
 </button>
-<p className="text-right font-weight-light" >{this.noteAdded}</p>
-<h5 className="card-title">{this.noteTitle}</h5>
-<p className="card-text">{this.notePrag}</p>
+<p className="text-right font-weight-ligh text-white" >{this.noteAdded}</p>
+<h5 className="card-title text-white">{this.noteTitle}</h5>
+<p className="card-text text-white ">{this.notePrag}</p>
 </div>
 </div>
         </div>
