@@ -148,7 +148,7 @@ closeNav=()=>{
           
 <div className="stickybtn "> 
               <button
-            className="btn btn-danger" 
+            className="btn btn-danger mb-3" 
             onClick={()=>{this.setState({open:true})}} 
             ><i class="fas fa-plus"></i>
             </button>
