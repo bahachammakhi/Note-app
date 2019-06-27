@@ -29,23 +29,25 @@ class TodoForm extends Component{
     render(){
         return(
          
- <div className="border-danger rounded">
-
-                <input type="text" 
-       className="border-danger rounded" 
+ 
+<div className="md-form form-sm w-25" >
+    <input type="text" 
+    id="form1"
+       className="form-control form-control-sm" 
        aria-label="Sizing example input"
         aria-describedby="inputGroup-sizing-default"
         value={this.state.newTodoContent}
         onChange={this.handleUserInput}
         name="newTodoContent"
-        /> 
-        <button type="submit" 
-     className="btn btn-outline-danger ml-3 "
+        />   
+<label for="form1">TodoContent</label>
+ <button type="submit" 
+     className="btn btn-outline-danger"
      onClick={this.writeTodoItem}
      >Add TodoItem
      
      </button>
-         </div>
+   </div>      
         
   )
     }

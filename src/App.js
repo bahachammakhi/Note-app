@@ -49,7 +49,23 @@ class App extends Component {
     }
 
   }
+ componentWillUpdate(){
+  const previousTodolist = this.state.todolist;
+  this.databasetodolist.on('child_changed', snap => {
+    for(var i=0; i < previousTodolist.length; i++){
+      if(previousTodolist[i].id === snap.key){
+        previousTodolist[i] = { 
+          todoContent : snap.val().todoContent,
+          todoTimeAdded : snap.val().todoTimeAdded
+        }
+      }
+    }
 
+    this.setState({
+      todolist: previousTodolist
+    })
+  })
+ }
   componentWillMount(){
    
     const previousNotes = this.state.notes;
@@ -82,6 +98,7 @@ class App extends Component {
       })
     })
 
+
     this.databasenotes.on('child_removed', snap => {
       for(var i=0; i < previousNotes.length; i++){
         if(previousNotes[i].id === snap.key){
@@ -93,6 +110,7 @@ class App extends Component {
         notes: previousNotes
       })
     })
+
     this.databasetodolist.on('child_removed', snap => {
       for(var i=0; i < previousTodolist.length; i++){
         if(previousTodolist[i].id === snap.key){
@@ -105,6 +123,7 @@ class App extends Component {
       })
     })
   }
+  
 
   addNote(note,note1,note2){
     this.databasenotes.push().set({ noteTitle: note, notePrag : note1 , noteTimeAdded : note2});
@@ -115,6 +134,10 @@ class App extends Component {
   removetodo=(TodoId)=>{
     console.log("from the parent: " + TodoId);
     this.databasetodolist.child(TodoId).remove();
+  }
+  EditTodo = (TodoId,content,time)=>{
+    this.databasetodolist.child(TodoId).set({todoContent: content, todoTimeAdded : time})
+
   }
   removeNote(noteId){
     console.log("from the parent: " + noteId);
@@ -176,6 +199,7 @@ handleNoteComponent = () =>{
         todoTimeAdded={todo.todoTimeAdded}
         todoId={todo.id} 
         key={todo.id} 
+        EditTodo={this.EditTodo}
         removetodo ={this.removetodo}/>
         </div>
       
@@ -217,14 +241,17 @@ handleNoteComponent = () =>{
         </div>
         </UnmountClosed>
         <UnmountClosed isOpened={this.state.todoOpen} >
-        <div className='row' className={this.state.main} onClick={this.closeNav} >
- <div className="todolist"> <TodoForm addTodoItem={this.addTodoItem}  />  </div>       
-<div className="todolist ">
+        <div className="row " className={this.state.main} onClick={this.closeNav} >
+          <div className="" >
+            <div className="todolist"> <TodoForm addTodoItem={this.addTodoItem} />  </div>       
+<div className="todolist margin- ">
  
 
   {AfficheTodo}
 </div>
     
+          </div>
+ 
       
       
         </div>

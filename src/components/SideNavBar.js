@@ -21,9 +21,9 @@ class SideNavBar extends React.Component{
             <div>
 <nav className="sidenav"  className={this.state.openNav} >
 
-<a onClick={this.props.note} >Notes</a>
- <a  onClick={this.props.todo} >TodoList</a>
-
+<a onClick={this.props.note} ><i class="fas fa-clipboard mr-2"></i>Notes</a>
+ <a  onClick={this.props.todo} ><i class="fas fa-list mr-2"></i>TodoList</a>
+<hr />
 </nav>
 </div>
             </div>

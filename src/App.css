@@ -47,7 +47,7 @@ margin-left : 40%;
 
 }
 .sidenav a {
-  padding: 8px 8px 8px 32px;
+  padding: 2px 5px 20px 15px;
   text-decoration: none;
   font-size: 25px;
   color: #818181;
@@ -57,7 +57,7 @@ margin-left : 40%;
 
 /* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
- background-color: black;
+ background-color: rgb(199, 199, 199);
 }
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
@@ -65,6 +65,9 @@ margin-left : 40%;
   transition: margin-left .5s;
   padding: 20px;
   background-color: black;
+}
+.margin-{
+  margin-top: -60px;
 }
 .todolist{
   transition: margin-left .5s;
@@ -89,10 +92,15 @@ margin-left : 40%;
   margin-left: 250px;
   transition: 0.5s;
 }
+.edit:hover{
+ color: white;
+   }
 .body{
   background-color:black;
 }
-
+.cursor{
+  cursor: pointer;
+}
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-width: 800px) {
  
@@ -107,6 +115,7 @@ margin-left : 40%;
     background-color: black;
     margin-left: 25%;
   }
+  
   ul{
     list-style: none
   }
@@ -118,7 +127,7 @@ margin-left : 40%;
     width: 100px;
   }
   .sidenav a {
-    padding: 10px 0px 10px 10px;
+    padding: 2px 2px 25px 10px;
     text-decoration: none;
     font-size: 15px;
     color: #818181;
@@ -128,5 +137,11 @@ margin-left : 40%;
   .modall{
    margin-left: 20%;
    margin-top: 25%;
+  }
+  .w-25{
+    width: 75%;
+  }
+  .cursor{
+    cursor: pointer;
   }
 }

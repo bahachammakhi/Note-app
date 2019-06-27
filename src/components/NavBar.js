@@ -14,8 +14,8 @@ constructor(props){
         return(
 <div>
 <nav className="navbar navbar-light bg-white">
-  <a className="navbar-brand" href="#">
-  <i className="fas fa-grip-lines mr-3" onClick={this.props.open =="push" ? this.props.closeNav : this.props.openNav} ></i>
+  <a className="navbar-brand cursor" href="#"  >
+  <i className="fas fa-grip-lines mr-3 cursor "  onClick={this.props.open =="push" ? this.props.closeNav : this.props.openNav} ></i>
     <img src={logo} width="50" height="50" alt="" />  ChammakhiNotes
   </a>
   <form class="form-inline d-none d-lg-block">
@@ -24,7 +24,6 @@ constructor(props){
   </form>
   <img src={bahapic} width="40" height="40" alt="Me" className="rounded-circle"  /> 
 </nav>
-    
 </div>
         )
     }
