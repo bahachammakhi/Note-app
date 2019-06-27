@@ -51,6 +51,7 @@ class App extends Component {
   }
  componentWillUpdate(){
   const previousTodolist = this.state.todolist;
+  const previousNotes = this.state.notes
   this.databasetodolist.on('child_changed', snap => {
     for(var i=0; i < previousTodolist.length; i++){
       if(previousTodolist[i].id === snap.key){
@@ -63,6 +64,21 @@ class App extends Component {
 
     this.setState({
       todolist: previousTodolist
+    })
+  })
+  this.databasenotes.on('child_changed', snap => { 
+    for(var i=0; i < previousNotes.length; i++){
+      if(previousNotes[i].id === snap.key){
+        previousNotes[i] = { 
+          noteTitle: snap.val().noteTitle,
+          notePrag: snap.val().notePrag,
+          noteTimeAdded: snap.val().noteTimeAdded,
+        }
+      }
+    }
+
+    this.setState({
+      notes: previousNotes
     })
   })
  }
@@ -139,6 +155,10 @@ class App extends Component {
     this.databasetodolist.child(TodoId).set({todoContent: content, todoTimeAdded : time})
 
   }
+  EditNote = (NoteId,title,content,time)=>{
+    this.databasenotes.child(NoteId).set({noteTitle: title,notePrag : content ,noteTimeAdded : time})
+
+  }
   removeNote(noteId){
     console.log("from the parent: " + noteId);
     this.databasenotes.child(noteId).remove();
@@ -178,13 +198,14 @@ handleNoteComponent = () =>{
   render() {
     const noteitem = this.state.notes.map((note) => {
       return (
-        <div className="col ">
+        <div className="  ">
 
             <Note noteTitle={note.noteTitle} 
         notePrag={note.notePrag} 
         noteTimeAdded={note.noteTimeAdded}
         noteId={note.id} 
         key={note.id} 
+        EditNote={this.EditNote}
         removeNote ={this.removeNote}/>
         </div>
       
@@ -229,7 +250,7 @@ handleNoteComponent = () =>{
           
 <div className="stickybtn "> 
               <button
-            className="btn btn-danger mb-3" 
+            className="btn peach-gradient mb-3" 
             onClick={()=>{this.setState({open:true})}} 
             ><i class="fas fa-plus"></i>
             </button>

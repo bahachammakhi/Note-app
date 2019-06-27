@@ -69,12 +69,31 @@ margin-left : 40%;
 .margin-{
   margin-top: -60px;
 }
+.far{
+  cursor: pointer;
+}
+
+.far:hover{
+  color : red
+}
 .todolist{
   transition: margin-left .5s;
   padding: 20px;
   background-color: black;
-  margin-left: 40%;
+  margin-left: 5%;
 }
+.md-form textarea[type=text]:focus:not([readonly]) + label {
+  color: rgb(228, 29, 29); }
+  .md-form textarea[type=text]:focus:not([readonly]) {
+  box-shadow: 0 1px 0 0 rgb(168, 23, 54);
+  border-bottom: 1px solid rgb(209, 15, 15); }
+  
+  .md-form input[type=text]:focus:not([readonly]) + label {
+    color: rgba(194, 18, 18, 0.26); }
+    .md-form input[type=text]:focus:not([readonly]) {
+    box-shadow: 0 1px 0 0 rgb(206, 22, 62);
+    border-bottom: 1px solid rgb(209, 15, 15); }
+    
 /* class for collapse */
 .push{
   height: 87%; /* 100% Full-height */
@@ -93,7 +112,8 @@ margin-left : 40%;
   transition: 0.5s;
 }
 .edit:hover{
- color: white;
+ color: rgb(214, 98, 98);
+ cursor: pointer;
    }
 .body{
   background-color:black;
@@ -120,7 +140,7 @@ margin-left : 40%;
     list-style: none
   }
   .pushmain{
-    margin-left: 0px;
+    margin-left: 100px;
     transition: 0.5s;
   }
   .push{

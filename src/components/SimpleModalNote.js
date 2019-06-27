@@ -4,8 +4,9 @@ class SimpleModalTodo extends React.Component {
     constructor(props){
         super(props)
         this.state={
-            newTodoContent: '',
-            newTodoAdded : Date(),
+          newNoteTitle: '',
+          newNotePrag : '',
+          newNoteAdded : Date(),
             open : false
         }
     }
@@ -27,12 +28,13 @@ handleUserInput=(e)=>{
 writeTodoItem=()=>{
     // call a method that sets the noteContent for a note to
     // the value of the input
-    this.props.EditTodo(this.props.TodoId,this.state.newTodoContent,this.state.newTodoAdded);
+    this.props.EditNote(this.props.NoteId,this.state.newNoteTitle,this.state.newNotePrag,this.state.newNoteAdded);
 
     // Set newNoteContent back to an empty string.
     this.setState({
-        newTodoContent: '',
-        newTodoAdded : Date(),
+      newNoteTitle: '',
+      newNotePrag : '',
+      newNoteAdded : Date(),
     })
 }
 render(){
@@ -48,24 +50,37 @@ render(){
       
           <div className="card  border-danger modall mt-3 ">
           <div className="md-form form  ml-3 mr-3 mb-5" >
-          <label for="form1" className="text-danger" >TodoContent</label>
+          <label for="notetitle" className="text-danger" >Note Title</label>
          <input type="text" 
-    id="form1"
+       id="notetitle"
        className="form-control form-control-sm" 
        aria-label="Sizing example input"
         aria-describedby="inputGroup-sizing-default"
         value={this.state.newTodoContent}
         onChange={this.handleUserInput}
-        name="newTodoContent"
+        name="newNoteTitle"
         />   
+       <div className="md-form" >
+       <label for="notetitle" className="text-danger" >Note Text</label>
+          <textarea type="text" 
+    id="noteprag"
+       className="md-textarea form-control" 
+       aria-label="Sizing example input"
+        aria-describedby="inputGroup-sizing-default"
+        value={this.state.newNotePrag}
+        onChange={this.handleUserInput}
+        name="newNotePrag"
+        />   
+       </div>
+        
       
+   
 
- <button type="submit" 
-     className="btn btn-outline-danger "
+ <button 
+ type="submit" 
+     className="btn peach-gradient"
      onClick={this.writeTodoItem}
-     >Edit TodoItem
-     
-     </button>
+     >Edit Note</button>
    </div>      
        
         </div>

@@ -37,43 +37,42 @@ class NoteForm extends Component{
 
     render(){
         return(
-            <div className="form-group  ">
-            <div className="container ">
-         <div className="row col mt-3 ">
-         <label for="textInput">Note title</label>
+           <div>
+                <div className="md-form">
+                      <label for="textInput" className="text-danger" >Note title</label>
        <input type="text" 
-       className="form-control-sm border-danger" 
+       className="form-control" 
        aria-label="Sizing example input"
         aria-describedby="inputGroup-sizing-default"
         value={this.state.newNoteTitle}
         onChange={this.handleUserInput}
         name="newNoteTitle"
         />
+                </div>
+       
         
-         </div>
-         <div className="row col mt-3 ">
-         <label for="textarea">Note body</label>
+       
+         <div className="md-form ">
+         <label for="textarea" className="text-danger" >Note body</label>
          <textarea type="text"
-        className="form-control-sm border-danger " 
+        className="form-control row md-textarea" 
         aria-label="Sizing example input" 
         aria-describedby="inputGroup-sizing-default"
         name="newNotePrag"
         onChange= {this.handleUserInput}
         value={this.state.newNotePrag}
         />
-        
-       
-         </div>
-       <div className="row col mt-3 "> 
         <button type="submit" 
      className="btn btn-outline-danger"
      onClick={this.writeNote}
      >Add Note
      
      </button>
-        </div>
-     </div>
-     </div>
+       
+         </div>
+           </div>
+               
+   
           
    
     

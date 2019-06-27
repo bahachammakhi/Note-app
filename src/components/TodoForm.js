@@ -30,7 +30,7 @@ class TodoForm extends Component{
         return(
          
  
-<div className="md-form form-sm w-25" >
+<div className="md-form form-sm w-75" >
     <input type="text" 
     id="form1"
        className="form-control form-control-sm" 
@@ -40,13 +40,16 @@ class TodoForm extends Component{
         onChange={this.handleUserInput}
         name="newTodoContent"
         />   
-<label for="form1">TodoContent</label>
- <button type="submit" 
-     className="btn btn-outline-danger"
+<label for="form1" className="text-danger" >TodoContent</label>
+<div className="text-center">
+    <button type="submit" 
+     className="btn peach-gradient mb-3"
      onClick={this.writeTodoItem}
      >Add TodoItem
      
      </button>
+</div>
+ 
    </div>      
         
   )
