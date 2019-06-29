@@ -92,24 +92,22 @@ class App extends Component {
  }
  
  componentWillUnmount(){
-  firebase.auth().onAuthStateChanged(
-    (user) => this.setState({isSignedIn: !!user})
-);
-
+  this.unregisterAuthObserver()
  }
  
   componentDidMount(){
-    const previousNotes = this.state.notes;
-    const previousTodolist = this.state.todolist;
-   firebase.auth().onAuthStateChanged(
-        (user) => this.setState({isSignedIn: !!user, user : user.uid})
-    );
+   
   
     // DataSnapshot
-
+    this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(
+      (user) => this.setState({isSignedIn: !!user,user:user.uid})
+  );
+  
   firebase.auth().onAuthStateChanged(
     (user) =>{
-   firebase.database().ref( 'users/'  + user.uid).child('notes').on('child_added', snap => {
+      const previousNotes = this.state.notes;
+      const previousTodolist = this.state.todolist;
+    firebase.database().ref( 'users/'  + user.uid).child('notes').on('child_added', snap => {
       this.setState({loadingnote: true})
 
       previousNotes.push({
@@ -160,7 +158,9 @@ class App extends Component {
         todolist: previousTodolist
       })
     })
-    } 
+   } 
+  
+    
 );
      
     
@@ -215,6 +215,10 @@ handleNoteComponent = () =>{
     todoOpen :false
   })
 }
+logout=()=>{
+  firebase.auth().signOut()
+  this.setState({notes:[],isSignedIn : false,todolist:[]})
+}
   render() {
     const noteitem = this.state.notes.map((note) => {
       return (
@@ -258,7 +262,7 @@ handleNoteComponent = () =>{
          <div className="sidenav" >  
       <SideNav openNav={this.state.openNav} note={this.handleNoteComponent} todo={this.handleTodoComponent} />
         </div> 
-        <NavBar signin={this.state.isSignedIn} openNav={this.handleNav} closeNav={this.closeNav} open={this.state.openNav} />
+        <NavBar signout={this.logout} openNav={this.handleNav} closeNav={this.closeNav} open={this.state.openNav} />
        <UnmountClosed isOpened={this.state.noteO}>
         <div className="notePage"  className={this.state.main} onClick={this.closeNav} >
         <div className="container">

@@ -11,9 +11,7 @@ constructor(props){
         name : "Owner",
     }
 }
-logout=() =>{
-  firebase.auth().signOut()
-}
+
 
     render(){
         return(
@@ -27,7 +25,7 @@ logout=() =>{
     <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
     <button className="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
   </form>
-  <a onClick={this.logout}>Sign-out</a>
+  <a onClick={this.props.signout}>Sign-out</a>
   <img src={bahapic} width="40" height="40" alt="Me" className="rounded-circle"  /> 
 </nav>
 </div>

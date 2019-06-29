@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "my-note-app-8edfd"
+  },
+  "targets": {
+    "my-note-app-8edfd": {
+      "hosting": {
+        "app": [
+          "baha-note-app"
+        ]
+      }
+    }
   }
 }
