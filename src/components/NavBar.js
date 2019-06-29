@@ -26,7 +26,7 @@ constructor(props){
     <button className="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
   </form>
   <a onClick={this.props.signout}>Sign-out</a>
-  <img src={bahapic} width="40" height="40" alt="Me" className="rounded-circle"  /> 
+  <img src={this.props.profilepic} width="40" height="40" alt="Me" className="rounded-circle"  /> 
 </nav>
 </div>
         )

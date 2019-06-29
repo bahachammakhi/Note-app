@@ -143,8 +143,17 @@ margin-left : 40%;
     margin-left: 100px;
     transition: 0.5s;
   }
+  .signin{
+   margin-top: 250px
+  }
+  .cardcenter{
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+  }
   .push{
     width: 100px;
+    background-color: rgb(255, 255, 255);
   }
   .sidenav a {
     padding: 2px 2px 25px 10px;
