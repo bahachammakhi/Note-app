@@ -33,7 +33,7 @@ class Note extends Component{
            
             <div className="card bg-ligth border-danger wrapper mt-3 w-75  " id="content">
 <div className="card-body ">
-<div className="" ><i class="fas fa-edit ml-3 edit" onClick={()=>{this.setState({open:true})}} ></i><button type="button" class="close text-dark " aria-label="Close">
+<div ><i class="fas fa-edit ml-3 edit" onClick={()=>{this.setState({open:true})}} ></i><button type="button" class="close text-dark " aria-label="Close">
   <span aria-hidden="true" className=" font-weight-bolder"
     onClick={() => this.handleRemoveNote(this.noteId)}>
   &times;</span>

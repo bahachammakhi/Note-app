@@ -1,9 +1,10 @@
 import React , {Component}from 'react';
 import './App.css';
 import firebase from 'firebase';
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import "@material-ui/core"
-import app from 'firebase/app'
 import 'firebase/database';
+import "firebase/auth";
 import "./bootstrap-4.3.1-dist/css/bootstrap.min.css"
 import NavBar from "./components/NavBar"
 import Footer from "./components/Footer"
@@ -14,26 +15,13 @@ import {UnmountClosed} from 'react-collapse';
 import SimpleModal from "./components/SimpleModal"
 import SideNav from './components/SideNavBar';
 import TodoForm from "./components/TodoForm"
-var firebaseConfig = {
-  apiKey: "AIzaSyC6OH3f6TD-y3XIcRk2zQWQ2J64DaZpU5I",
-  authDomain: "my-note-app-8edfd.firebaseapp.com",
-  databaseURL: "https://my-note-app-8edfd.firebaseio.com",
-  projectId: "my-note-app-8edfd",
-  storageBucket: "my-note-app-8edfd.appspot.com",
-  messagingSenderId: "53078311775",
-  appId: "1:53078311775:web:171a4d3d41ea3b46"
-};
+import Firebase from "./firebase"
+// Configure FirebaseUI.
 class App extends Component {
-
   constructor(props){
     super(props);
     this.addNote = this.addNote.bind(this);
     this.removeNote = this.removeNote.bind(this);
-    this.permission = this.permission.bind(this)
-    this.app = firebase.initializeApp(firebaseConfig);
-    this.databasenotes = this.app.database().ref().child('notes');
-    this.databasetodolist = this.app.database().ref().child('todolist');
-
     // We're going to setup the React state of our component
     this.state = {
       notes: [],
@@ -46,13 +34,32 @@ class App extends Component {
       main : "",
       noteO : true,
       todoOpen : false,
+      isSignedIn: false,// Local signed-in state.
+      user : "baha"
+   
     }
 
   }
+  
+  // Configure FirebaseUI.
+  uiConfig = {
+    // Popup signin flow rather than redirect flow.
+    signInFlow: 'popup',
+    // We will display Google and Facebook as auth providers.
+    signInOptions: [
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+      firebase.auth.EmailAuthProvider.PROVIDER_ID
+    ],
+    callbacks: {
+      // Avoid redirects after sign-in.
+      signInSuccessWithAuthResult: () => false
+    }
+  };
  componentWillUpdate(){
-  const previousTodolist = this.state.todolist;
+  const previousTodolist = this.state.todolist
   const previousNotes = this.state.notes
-  this.databasetodolist.on('child_changed', snap => {
+
+  firebase.database().ref( 'users/'  + this.state.user).child('todolist').on('child_changed', snap => {
     for(var i=0; i < previousTodolist.length; i++){
       if(previousTodolist[i].id === snap.key){
         previousTodolist[i] = { 
@@ -66,7 +73,7 @@ class App extends Component {
       todolist: previousTodolist
     })
   })
-  this.databasenotes.on('child_changed', snap => { 
+  firebase.database().ref( 'users/'  + this.state.user).child('notes').on('child_changed', snap => { 
     for(var i=0; i < previousNotes.length; i++){
       if(previousNotes[i].id === snap.key){
         previousNotes[i] = { 
@@ -81,15 +88,30 @@ class App extends Component {
       notes: previousNotes
     })
   })
+  
  }
-  componentWillMount(){
-   
+ 
+ componentWillUnmount(){
+  firebase.auth().onAuthStateChanged(
+    (user) => this.setState({isSignedIn: !!user})
+);
+
+ }
+ 
+  componentDidMount(){
     const previousNotes = this.state.notes;
     const previousTodolist = this.state.todolist;
-
+   firebase.auth().onAuthStateChanged(
+        (user) => this.setState({isSignedIn: !!user, user : user.uid})
+    );
+  
     // DataSnapshot
-    this.databasenotes.on('child_added', snap => {
+
+  firebase.auth().onAuthStateChanged(
+    (user) =>{
+   firebase.database().ref( 'users/'  + user.uid).child('notes').on('child_added', snap => {
       this.setState({loadingnote: true})
+
       previousNotes.push({
         id: snap.key,
         noteTitle: snap.val().noteTitle,
@@ -98,11 +120,11 @@ class App extends Component {
       })
 
       this.setState({
-        notes: previousNotes,
+        notes: previousNotes
         
       })
     })
-    this.databasetodolist.on('child_added', snap => {
+    firebase.database().ref( 'users/'  + user.uid).child('todolist').on('child_added', snap => {
       this.setState({loadingtodo: true})
       previousTodolist.push({
         id: snap.key,
@@ -115,7 +137,7 @@ class App extends Component {
     })
 
 
-    this.databasenotes.on('child_removed', snap => {
+    firebase.database().ref( 'users/'  + user.uid).child('notes').on('child_removed', snap => {
       for(var i=0; i < previousNotes.length; i++){
         if(previousNotes[i].id === snap.key){
           previousNotes.splice(i, 1);
@@ -127,7 +149,7 @@ class App extends Component {
       })
     })
 
-    this.databasetodolist.on('child_removed', snap => {
+    firebase.database().ref( 'users/'  + user.uid).child('notes').on('child_removed', snap => {
       for(var i=0; i < previousTodolist.length; i++){
         if(previousTodolist[i].id === snap.key){
           previousTodolist.splice(i, 1);
@@ -138,39 +160,37 @@ class App extends Component {
         todolist: previousTodolist
       })
     })
+    } 
+);
+     
+    
+    
   }
   
 
   addNote(note,note1,note2){
-    this.databasenotes.push().set({ noteTitle: note, notePrag : note1 , noteTimeAdded : note2});
+    firebase.database().ref( 'users/'  + this.state.user).child('notes').push().set({ noteTitle: note, notePrag : note1 , noteTimeAdded : note2});
   }
   addTodoItem=(content,time)=>{
-    this.databasetodolist.push().set({ todoContent: content, todoTimeAdded : time});
+    firebase.database().ref( 'users/'  + this.state.user).child('todolist').push().set({ todoContent: content, todoTimeAdded : time});
   }
   removetodo=(TodoId)=>{
     console.log("from the parent: " + TodoId);
-    this.databasetodolist.child(TodoId).remove();
+    firebase.database().ref( 'users/'  + this.state.user).child('todolist').child(TodoId).remove();
   }
   EditTodo = (TodoId,content,time)=>{
-    this.databasetodolist.child(TodoId).set({todoContent: content, todoTimeAdded : time})
+    firebase.database().ref( 'users/'  + this.state.user).child('todolist').child(TodoId).set({todoContent: content, todoTimeAdded : time})
 
   }
   EditNote = (NoteId,title,content,time)=>{
-    this.databasenotes.child(NoteId).set({noteTitle: title,notePrag : content ,noteTimeAdded : time})
+    firebase.database().ref( 'users/'  + this.state.user).child('notes').child(NoteId).set({noteTitle: title,notePrag : content ,noteTimeAdded : time})
 
   }
   removeNote(noteId){
     console.log("from the parent: " + noteId);
-    this.databasenotes.child(noteId).remove();
+    firebase.database().ref( 'users/'  + this.state.user).child('notes').child(noteId).remove();
   }
-  permission(){
-    let name = prompt('give me your name')
-    let password = prompt('give me your password')
-     name == "owner" && password == "baha" ? this.setState({permission : true , name : name}) : this.setState({permission : false, name : name})
-    
-   
-
-  }
+  
   handleCloseNoteform=() =>{
     this.setState({
       open: false
@@ -226,6 +246,10 @@ handleNoteComponent = () =>{
       
       )
     })
+    const signin =  <div>
+    <p className="text-white" >Please sign-in:</p>
+    <StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()}/>
+  </div>
     const loading = <div className="spinner-border"></div>
     const AfficheNote = this.state.loadingnote ? <div className="card-columns" > {noteitem}</div>  : loading 
     const AfficheTodo = this.state.loadingtodo ? <div className="list-group list-group-flush" > {todoItem}</div>  : loading 
@@ -234,7 +258,7 @@ handleNoteComponent = () =>{
          <div className="sidenav" >  
       <SideNav openNav={this.state.openNav} note={this.handleNoteComponent} todo={this.handleTodoComponent} />
         </div> 
-        <NavBar openNav={this.handleNav} closeNav={this.closeNav} open={this.state.openNav} />
+        <NavBar signin={this.state.isSignedIn} openNav={this.handleNav} closeNav={this.closeNav} open={this.state.openNav} />
        <UnmountClosed isOpened={this.state.noteO}>
         <div className="notePage"  className={this.state.main} onClick={this.closeNav} >
         <div className="container">
@@ -242,7 +266,7 @@ handleNoteComponent = () =>{
          <div className=" w-25 col align-self-center"> <SimpleModal handleCloseNoteform={this.handleCloseNoteform} open={this.state.open} addNote={this.addNote} /></div>
          </div>
          <div  className=" margin mb-5 col  " >
-          {AfficheNote}
+            { this.state.isSignedIn ? AfficheNote : signin }
          </div>
          </div>
 
@@ -252,7 +276,7 @@ handleNoteComponent = () =>{
               <button
             className="btn peach-gradient mb-3" 
             onClick={()=>{this.setState({open:true})}} 
-            ><i class="fas fa-plus"></i>
+            ><i className="fas fa-plus"></i>
             </button>
         
 
