@@ -2,6 +2,7 @@ import React,{Component} from "react"
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import firebase from 'firebase';
 import "firebase/auth";
+import logo from "./img/logo.png"
 class SignIn extends Component{
     
   // Configure FirebaseUI.
@@ -20,15 +21,20 @@ class SignIn extends Component{
   };
     render(){
         return(
-            <div  className=" mt-5   card ">
-                <div className="">
-                    <div className="">
-                      <h6 className=" text-center text-dark mt-5" >Please sign-in:</h6>  
+            <div  className=" mt-5   card container w-50">
+                <div className="container">
+                    <div className="text-center"> 
+                       <img src={logo} />
+                     
                       <hr/>
                     </div>
-                  <div className="mt-5">
+                    <div className="row">
+                     
+                      <div className="mt-3 mb-5 col-sm">
                        <StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()}/>
                       </div>  
+                    </div>
+                  
     
                 </div>
    

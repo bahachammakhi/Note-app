@@ -40,7 +40,7 @@ class TodoForm extends Component{
         onChange={this.handleUserInput}
         name="newTodoContent"
         />   
-<label for="form1" className="text-danger" >TodoContent</label>
+<label for="form1" className="text-white" >TodoContent</label>
 <div className="text-center">
     <button type="submit" 
      className="btn peach-gradient mb-3"

@@ -83,16 +83,16 @@ margin-left : 40%;
   margin-left: 5%;
 }
 .md-form textarea[type=text]:focus:not([readonly]) + label {
-  color: rgb(228, 29, 29); }
+  color: rgb(255, 255, 255); }
   .md-form textarea[type=text]:focus:not([readonly]) {
-  box-shadow: 0 1px 0 0 rgb(168, 23, 54);
-  border-bottom: 1px solid rgb(209, 15, 15); }
+  box-shadow: 0 1px 0 0 rgb(255, 255, 255);
+  border-bottom: 1px solid rgb(255, 255, 255); }
   
   .md-form input[type=text]:focus:not([readonly]) + label {
-    color: rgba(194, 18, 18, 0.26); }
+    color: rgb(255, 255, 255); }
     .md-form input[type=text]:focus:not([readonly]) {
-    box-shadow: 0 1px 0 0 rgb(206, 22, 62);
-    border-bottom: 1px solid rgb(209, 15, 15); }
+    box-shadow: 0 1px 0 0 rgb(255, 255, 255);
+    border-bottom: 1px solid rgb(255, 255, 255); }
     
 /* class for collapse */
 .push{
@@ -110,6 +110,10 @@ margin-left : 40%;
 .pushmain{
   margin-left: 250px;
   transition: 0.5s;
+}
+.vl {
+  border-left: 3px solid rgb(8, 8, 8);
+  height: 200px;
 }
 .edit:hover{
  color: rgb(214, 98, 98);
@@ -143,14 +147,6 @@ margin-left : 40%;
     margin-left: 100px;
     transition: 0.5s;
   }
-  .signin{
-   margin-top: 250px
-  }
-  .cardcenter{
-    margin: 0 auto; /* Added */
-    float: none; /* Added */
-    margin-bottom: 10px; /* Added */
-  }
   .push{
     width: 100px;
     background-color: rgb(255, 255, 255);
@@ -172,5 +168,8 @@ margin-left : 40%;
   }
   .cursor{
     cursor: pointer;
+  }
+  .text-mobile{
+    font-size: 20px;
   }
 }
