@@ -1,7 +1,6 @@
 import React , {Component}from 'react';
 import './App.css';
 import firebase from 'firebase';
-import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import "@material-ui/core"
 import 'firebase/database';
 import "firebase/auth";
@@ -9,7 +8,6 @@ import "./bootstrap-4.3.1-dist/css/bootstrap.min.css"
 import NavBar from "./components/NavBar"
 import Footer from "./components/Footer"
 import Note from './components/Note';
-import NoteForm from './components/NoteForm';
 import TodoList from "./components/TodoList"
 import {UnmountClosed} from 'react-collapse';
 import SimpleModal from "./components/SimpleModal"
@@ -17,6 +15,7 @@ import SideNav from './components/SideNavBar';
 import TodoForm from "./components/TodoForm"
 import Firebase from "./firebase"
 import SignIn from "./components/SignIn"
+import NavPills from './components/NavPills';
 // Configure FirebaseUI.
 class App extends Component {
   constructor(props){
@@ -37,7 +36,8 @@ class App extends Component {
       todoOpen : false,
       isSignedIn: false,// Local signed-in state.
       user : "baha",
-      userpic: ""
+      userpic: "",
+      username:''
    
     }
 
@@ -102,7 +102,7 @@ class App extends Component {
   
     // DataSnapshot
     this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(
-      (user) => this.setState({isSignedIn: !!user,user:user.uid,userpic:user.photoURL})
+      (user) => this.setState({isSignedIn: !!user,user:user.uid,userpic:user.photoURL,username:user.displayName})
   );
   
   firebase.auth().onAuthStateChanged(
@@ -263,10 +263,13 @@ logout=()=>{
     //main of the page
     const main =  <div className="body">
     <div className="sidenav" >  
- <SideNav openNav={this.state.openNav} note={this.handleNoteComponent} todo={this.handleTodoComponent} />
+ <SideNav openNav={this.state.openNav} />
    </div> 
-   <NavBar  profilepic={this.state.userpic} signout={this.logout} openNav={this.handleNav} closeNav={this.closeNav} open={this.state.openNav} />
+    
+   <NavBar username={this.state.username} profilepic={this.state.userpic} signout={this.logout} openNav={this.handleNav} closeNav={this.closeNav} open={this.state.openNav} />
+   <div ><NavPills note={this.handleNoteComponent} todo={this.handleTodoComponent} /> </div>
   <UnmountClosed isOpened={this.state.noteO}>
+   
    <div className="notePage"  className={this.state.main} onClick={this.closeNav} >
    <div className="container">
     <div className="row " >
@@ -295,20 +298,20 @@ logout=()=>{
    <UnmountClosed isOpened={this.state.todoOpen} >
    <div className="row " className={this.state.main} onClick={this.closeNav} >
      <div className="" >
-       <div className="todolist"> <TodoForm addTodoItem={this.addTodoItem} />  </div>       
-<div className="todolist margin- ">
+            
+<div className="todolist margin-bottom ">
 
 
 {AfficheTodo}
 </div>
-
+ <div className=" todoform"> <TodoForm addTodoItem={this.addTodoItem} />  </div> 
      </div>
 
  
  
    </div>
    </UnmountClosed>
-     <Footer /></div> 
+  </div> 
     return (
       <div>
         {this.state.isSignedIn ? main : <div className="d-flex justify-content-center"> <SignIn /></div>}

@@ -1,10 +1,13 @@
 import React,{Component} from "react"
+import {UnmountClosed} from 'react-collapse';
 class TodoForm extends Component{
     constructor(props){
         super(props)
         this.state={
             newTodoContent: '',
-            newTodoAdded : Date()
+            newTodoAdded : Date(),
+            open:false,
+            isopened : true
         }
     }
     handleUserInput=(e)=>{
@@ -28,9 +31,12 @@ class TodoForm extends Component{
 
     render(){
         return(
-         
- 
-<div className="md-form form-sm w-75" >
+  <div>
+      <UnmountClosed isOpened={this.state.isopened}>
+<p className=" mb-5 hoveri" onClick={()=>{this.setState({isopened: false,open:true})}} ><i class="fas fa-plus hovera mr-3"></i>Add task</p>
+      </UnmountClosed>
+  <UnmountClosed isOpened={this.state.open}>
+<div className="md-form form-sm w-50" >
     <input type="text" 
     id="form1"
        className="form-control form-control-sm" 
@@ -40,17 +46,34 @@ class TodoForm extends Component{
         onChange={this.handleUserInput}
         name="newTodoContent"
         />   
-<label for="form1" className="text-white" >TodoContent</label>
-<div className="text-center">
-    <button type="submit" 
-     className="btn peach-gradient mb-3"
+<label for="form1" className="text-white" >Add task</label>
+<div className="ml-3 row">
+    <div className="col">
+        <button type="submit" 
+     className="btn btn-outline-danger btn-sm"
      onClick={this.writeTodoItem}
-     >Add TodoItem
+     >Add Task
      
      </button>
+    </div>
+    <div className="col">
+        <button type="submit" 
+     className="btn btn-outline-danger btn-sm "
+     onClick={()=>{this.setState({isopened:true,open:false})}}
+     >Cancel
+     
+     </button> 
+    </div>
+
+    
 </div>
+</div>
+ </UnmountClosed>    
+  </div>       
  
-   </div>      
+
+ 
+       
         
   )
     }

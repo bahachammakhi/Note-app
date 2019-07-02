@@ -1,5 +1,5 @@
 .sticky-footer {
-  position: fixed;
+  position: relative;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -9,6 +9,9 @@
   float: none;
   margin: 0 auto;
 }
+.margin-bottom{
+  margin-bottom:  35%;
+}
 footer {
   
   left: 0;
@@ -17,6 +20,13 @@ footer {
   background-color: red;
   color: white;
   text-align: center;
+}
+.todoform{
+  bottom : 0 ;
+  position: fixed;
+  width : 100%;
+  margin-left: 25%;
+  margin-right: 10%;
 }
 .modall{
 margin-left : 40%;
@@ -77,11 +87,25 @@ margin-left : 40%;
   color : red
 }
 .todolist{
+  margin-top : 50px;
   transition: margin-left .5s;
   padding: 20px;
-  background-color: black;
-  margin-left: 5%;
+  margin-left: 22%;
+  margin-right: 10%;
 }
+.hovera{
+  color:white;
+}
+.hovera:hover{
+  color:red;
+}
+.hoveri{
+  color:white;
+}
+.hoveri:hover{
+  color :rgb(250, 4, 4);
+}
+
 .md-form textarea[type=text]:focus:not([readonly]) + label {
   color: rgb(255, 255, 255); }
   .md-form textarea[type=text]:focus:not([readonly]) {
@@ -139,7 +163,6 @@ margin-left : 40%;
     background-color: black;
     margin-left: npm%;
   }
-  
   ul{
     list-style: none
   }
@@ -171,5 +194,8 @@ margin-left : 40%;
   }
   .text-mobile{
     font-size: 20px;
+  }
+  .todoform{
+    margin-left : 10%;
   }
 }

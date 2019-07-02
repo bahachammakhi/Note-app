@@ -8,6 +8,7 @@
     "@trendmicro/react-sidenav": "^0.4.5",
     "firebase": "^6.2.0",
     "firebaseui": "^4.0.0",
+    "mdbreact": "^4.17.0",
     "react": "^16.8.6",
     "react-collapse": "^4.0.3",
     "react-dom": "^16.8.6",
