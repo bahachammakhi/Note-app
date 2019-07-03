@@ -21,7 +21,7 @@ class SignIn extends Component{
   };
     render(){
         return(
-            <div  className=" mt-5   card container w-50">
+            <div  className=" mt-5   card container w-75">
                 <div className="container">
                     <div className="text-center"> 
                        <img src={logo} />

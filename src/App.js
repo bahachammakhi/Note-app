@@ -37,7 +37,8 @@ class App extends Component {
       isSignedIn: false,// Local signed-in state.
       user : "baha",
       userpic: "",
-      username:''
+      username:'',
+      useremail:''
    
     }
 
@@ -102,7 +103,7 @@ class App extends Component {
   
     // DataSnapshot
     this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(
-      (user) => this.setState({isSignedIn: !!user,user:user.uid,userpic:user.photoURL,username:user.displayName})
+      (user) => this.setState({isSignedIn: !!user,user:user.uid,userpic:user.photoURL,username:user.displayName,useremail:user.email})
   );
   
   firebase.auth().onAuthStateChanged(
@@ -266,7 +267,7 @@ logout=()=>{
  <SideNav openNav={this.state.openNav} />
    </div> 
     
-   <NavBar username={this.state.username} profilepic={this.state.userpic} signout={this.logout} openNav={this.handleNav} closeNav={this.closeNav} open={this.state.openNav} />
+   <NavBar useremail={this.state.useremail} username={this.state.username} profilepic={this.state.userpic} signout={this.logout} openNav={this.handleNav} closeNav={this.closeNav} open={this.state.openNav} />
    <div ><NavPills note={this.handleNoteComponent} todo={this.handleTodoComponent} /> </div>
   <UnmountClosed isOpened={this.state.noteO}>
    

@@ -22,22 +22,24 @@ constructor(props){
      <img src={logo} width="50" height="50" alt="" />
   </a>
     <h6 className="navbar-brand d-none d-sm-block">Welcome Back {this.props.username}</h6>
-    
-  <MDBDropdown dropleft>
+   <div >
+       <MDBDropdown dropleft>
     <div className="mr-5">
        <MDBDropdownToggle  color="ligth">
          <img src={this.props.profilepic} width="40" height="40" alt="Me" className="rounded-circle"  />
       </MDBDropdownToggle>
     </div>
    <div className="mr-5">
-      <MDBDropdownMenu  basic>
-        <MDBDropdownItem>Profile</MDBDropdownItem>
+      <MDBDropdownMenu left basic>
+        <MDBDropdownItem>Username: {this.props.username}</MDBDropdownItem>
         <MDBDropdownItem divider />
         <MDBDropdownItem  onClick={this.props.signout} >Signout</MDBDropdownItem>
       </MDBDropdownMenu>
    </div>
    
   </MDBDropdown>
+     </div> 
+
   
 </nav>
 </div>
