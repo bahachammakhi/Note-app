@@ -46,12 +46,12 @@ render(){
         onClose={this.props.handleClose}
       >
       
-          <div className="card  border-danger modall mt-3 ">
-          <div className="md-form form  ml-3 mr-3 mb-5" >
-          <label for="form1" className="text-danger" >TodoContent</label>
+          <div className="card   modall mt-5 ">
+          <div className="md-form form  ml-3 mr-3 mb-5 mt-5" >
+          <label for="form1" className="text-dark" >TodoContent</label>
          <input type="text" 
     id="form1"
-       className="form-control form-control-sm" 
+       className="form-control form-control-sm mt-5" 
        aria-label="Sizing example input"
         aria-describedby="inputGroup-sizing-default"
         value={this.state.newTodoContent}
@@ -59,13 +59,16 @@ render(){
         name="newTodoContent"
         />   
       
-
- <button type="submit" 
-     className="btn btn-outline-danger "
+<div className="text-center mt-5">
+  <button type="submit" 
+     className="btn btn-dark "
      onClick={this.writeTodoItem}
-     >Edit TodoItem
+     >Edit
      
      </button>
+</div>
+
+ 
    </div>      
        
         </div>

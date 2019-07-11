@@ -48,26 +48,27 @@ render(){
         onClose={this.props.handleClose}
       >
       
-          <div className="card  border-danger modall mt-3 ">
-          <div className="md-form form  ml-3 mr-3 mb-5" >
-          <label for="notetitle" className="text-danger" >Note Title</label>
+          <div className="card modall mt-5 ">
+          <div className="ml-3 mr-3 mb-5 form-group  mt-5" >
+          
          <input type="text" 
        id="notetitle"
-       className="form-control form-control-sm" 
+       className="form-control " 
        aria-label="Sizing example input"
         aria-describedby="inputGroup-sizing-default"
+        placeholder="Note Title"
         value={this.state.newTodoContent}
         onChange={this.handleUserInput}
         name="newNoteTitle"
         />   
-       <div className="md-form" >
-       <label for="notetitle" className="text-danger" >Note Text</label>
+       <div className="form-group mt-3" >
           <textarea type="text" 
     id="noteprag"
-       className="md-textarea form-control" 
+       className=" form-control" 
        aria-label="Sizing example input"
         aria-describedby="inputGroup-sizing-default"
         value={this.state.newNotePrag}
+        placeholder="Note Pragraph"
         onChange={this.handleUserInput}
         name="newNotePrag"
         />   
@@ -75,12 +76,14 @@ render(){
         
       
    
-
- <button 
+<div className="text-center mt-5" >
+  <button 
  type="submit" 
-     className="btn peach-gradient"
+     className="btn btn-dark"
      onClick={this.writeTodoItem}
      >Edit Note</button>
+</div>
+ 
    </div>      
        
         </div>

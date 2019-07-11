@@ -28,16 +28,17 @@ render(){
         onClose={this.props.handleClose}
       >
       
-          <div className="card  border-danger modall ">
+          <div className="card modall ">
    
-   <div class="modal-header">
-        <h5 className="modal-title">Add note</h5>
-        <button type="button" className="close" onClick={this.props.handleCloseNoteform} >
+   <div class="">
+        <button type="button" className="close mt-3 mr-3 mb-3" onClick={this.props.handleCloseNoteform} >
           <span >&times;</span>
         </button>
       </div>
-   
+       <div className="d-flex justify-content-center">
           <NoteForm  addNote={this.props.addNote} />
+       </div>
+         
         </div>
        
         

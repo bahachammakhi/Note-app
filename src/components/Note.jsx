@@ -31,7 +31,7 @@ class Note extends Component{
         return(
             
            
-            <div className="card bg-ligth border-danger wrapper mt-3 w-75  " id="content">
+            <div className="card cardbackground  wrapper mt-3 w-75  " id="content">
 <div className="card-body ">
 <div ><i class="fas fa-edit ml-3 edit" onClick={()=>{this.setState({open:true})}} ></i><button type="button" class="close text-dark " aria-label="Close">
   <span aria-hidden="true" className=" font-weight-bolder"
@@ -40,7 +40,7 @@ class Note extends Component{
 </button></div> 
 <p className="text-right font-weight-ligh text-dark" ></p>
 <h5 className="card-title text-dark ">{this.noteTitle}</h5>
-<hr className="bg-danger" />
+<hr className="bg-info" />
 <p className="card-text text-dark ">{this.notePrag}</p>
 <SimpleModalNote   open={this.state.open}  handleClose={this.handleCloseNoteedit} NoteId={this.props.noteId} EditNote={this.props.EditNote} />
 </div>

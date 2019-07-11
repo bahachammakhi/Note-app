@@ -33,7 +33,7 @@ class TodoForm extends Component{
         return(
   <div>
       <UnmountClosed isOpened={this.state.isopened}>
-<p className=" mb-5 hoveri" onClick={()=>{this.setState({isopened: false,open:true})}} ><i class="fas fa-plus hovera mr-3"></i>Add task</p>
+<p className=" mb-5 text-white " onClick={()=>{this.setState({isopened: false,open:true})}} ><i class="fas fa-plus  mr-3"></i>Add task</p>
       </UnmountClosed>
   <UnmountClosed isOpened={this.state.open}>
 <div className="md-form form-sm w-50" >
@@ -50,7 +50,7 @@ class TodoForm extends Component{
 <div className="ml-3 row">
     <div className="col">
         <button type="submit" 
-     className="btn btn-outline-danger btn-sm"
+     className="btn btn-dark btn-sm"
      onClick={this.writeTodoItem}
      >Add Task
      
@@ -58,7 +58,7 @@ class TodoForm extends Component{
     </div>
     <div className="col">
         <button type="submit" 
-     className="btn btn-outline-danger btn-sm "
+     className="btn btn-dark btn-sm "
      onClick={()=>{this.setState({isopened:true,open:false})}}
      >Cancel
      

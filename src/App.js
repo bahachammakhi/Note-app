@@ -16,6 +16,7 @@ import TodoForm from "./components/TodoForm"
 import Firebase from "./firebase"
 import SignIn from "./components/SignIn"
 import NavPills from './components/NavPills';
+import WelcomeHeader from './components/WelcomeHeader';
 // Configure FirebaseUI.
 class App extends Component {
   constructor(props){
@@ -30,8 +31,8 @@ class App extends Component {
       loadingtodo : false,
       permission : true,
       open : false,
-      openNav : "",
-      main : "",
+      openNav : "push",
+      main : "pushmain",
       noteO : true,
       todoOpen : false,
       isSignedIn: false,// Local signed-in state.
@@ -263,20 +264,23 @@ logout=()=>{
     const AfficheTodo = this.state.loadingtodo ? <div className="list-group list-group-flush" > {todoItem}</div>  : loading 
     //main of the page
     const main =  <div className="body">
+      <div className="d-block d-sm-none"><NavBar note={this.handleNoteComponent} todo={this.handleTodoComponent} profilepic={this.state.userpic} username={this.state.username} signout={this.logout} /></div>
     <div className="sidenav" >  
- <SideNav openNav={this.state.openNav} />
-   </div> 
     
-   <NavBar useremail={this.state.useremail} username={this.state.username} profilepic={this.state.userpic} signout={this.logout} openNav={this.handleNav} closeNav={this.closeNav} open={this.state.openNav} />
-   <div ><NavPills note={this.handleNoteComponent} todo={this.handleTodoComponent} /> </div>
+ <SideNav openNav={this.state.openNav}  note={this.handleNoteComponent} todo={this.handleTodoComponent} profilepic={this.state.userpic} username={this.state.username} signout={this.logout} />
+   </div> 
   <UnmountClosed isOpened={this.state.noteO}>
    
-   <div className="notePage"  className={this.state.main} onClick={this.closeNav} >
+   <div className="notePage"  className={this.state.main}  >
    <div className="container">
     <div className="row " >
     <div className=" w-25 col align-self-center"> <SimpleModal handleCloseNoteform={this.handleCloseNoteform} open={this.state.open} addNote={this.addNote} /></div>
     </div>
     <div  className=" margin mb-5 col  " >
+      <div className="d-flex justify-content-center   mt-3" >
+      <WelcomeHeader username={this.state.username} />
+      </div>
+
        {AfficheNote }
     </div>
     </div>
@@ -285,7 +289,7 @@ logout=()=>{
      
 <div className="stickybtn "> 
          <button
-       className="btn peach-gradient mb-3" 
+       className="btn btn-white border rounded-circle mb-3" 
        onClick={()=>{this.setState({open:true})}} 
        ><i className="fas fa-plus"></i>
        </button>
@@ -297,15 +301,16 @@ logout=()=>{
    </div>
    </UnmountClosed>
    <UnmountClosed isOpened={this.state.todoOpen} >
-   <div className="row " className={this.state.main} onClick={this.closeNav} >
+   <div className="row " className={this.state.main}  >
      <div className="" >
-            
+    <div className="d-flex justify-content-center   mt-3" >
+      <WelcomeHeader username={this.state.username} />
+      </div>  
+    <div className=" todoform mt-3"> <TodoForm addTodoItem={this.addTodoItem} />  </div>         
 <div className="todolist margin-bottom ">
-
-
 {AfficheTodo}
 </div>
- <div className=" todoform"> <TodoForm addTodoItem={this.addTodoItem} />  </div> 
+ 
      </div>
 
  
@@ -315,7 +320,7 @@ logout=()=>{
   </div> 
     return (
       <div>
-        {this.state.isSignedIn ? main : <div className="d-flex justify-content-center"> <SignIn /></div>}
+        {this.state.isSignedIn ? main : <div className="d-flex justify-content-center   mr-2 widthcard"> <SignIn /></div>}
         </div> 
     
      

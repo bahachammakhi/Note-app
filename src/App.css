@@ -5,6 +5,17 @@
   width: 100%;
   text-align: center;
 }
+.signinrigth{
+  background-color: #70acb1;
+}
+.singinleft{
+  background-color: #c6f1e7;
+}
+.widthcard{
+  width:50%;
+  margin-left : 25%;
+  margin-top: 5%;
+}
 .center{
   float: none;
   margin: 0 auto;
@@ -22,14 +33,13 @@ footer {
   text-align: center;
 }
 .todoform{
-  bottom : 0 ;
-  position: fixed;
   width : 100%;
   margin-left: 25%;
   margin-right: 10%;
 }
 .modall{
 margin-left : 40%;
+margin-top: 7%;
 }
 .card{
   width: 18rem;
@@ -42,8 +52,8 @@ margin-left : 40%;
 }
 .stickybtn {
   position: fixed;
-    bottom: 10%;
-    right: 50%;
+    bottom: 1%;
+    right: 40%;
 }
 /* side nav collapsed */
 .sidenav {
@@ -57,17 +67,17 @@ margin-left : 40%;
 
 }
 .sidenav a {
-  padding: 2px 5px 20px 15px;
+  padding: 2px 25px 2px 2px;
   text-decoration: none;
-  font-size: 25px;
-  color: #818181;
+  font-size: 1.3vw;
+  color: #ffffff;
   display: block;
   transition: 0.3s;
 }
 
 /* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
- background-color: rgb(199, 199, 199);
+ background-color: #65799B
 }
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
@@ -93,18 +103,6 @@ margin-left : 40%;
   margin-left: 22%;
   margin-right: 10%;
 }
-.hovera{
-  color:white;
-}
-.hovera:hover{
-  color:red;
-}
-.hoveri{
-  color:white;
-}
-.hoveri:hover{
-  color :rgb(250, 4, 4);
-}
 
 .md-form textarea[type=text]:focus:not([readonly]) + label {
   color: rgb(255, 255, 255); }
@@ -120,13 +118,13 @@ margin-left : 40%;
     
 /* class for collapse */
 .push{
-  height: 87%; /* 100% Full-height */
+  height: 100%; /* 100% Full-height */
   width: 250px; /* 250 width - change this with JavaScript */
   position: fixed; /* Stay in place */
   z-index: 1; /* Stay on top */
-  top: 78px; /* Stay at the top */
+top: 0; /* Stay at the top */
   left: 0;
-  background-color: rgb(255, 255, 255); /* Black*/
+  background-color: #59606d; /* Black*/
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 60px; /* Place content 60px from the top */
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
@@ -144,7 +142,7 @@ margin-left : 40%;
  cursor: pointer;
    }
 .body{
-  background-color:black;
+  background-color:#65799B;
 }
 .cursor{
   cursor: pointer;
@@ -159,19 +157,19 @@ margin-left : 40%;
   }
   .todolist{
     transition: margin-left .5s;
-    padding: 20px;
-    background-color: black;
-    margin-left: npm%;
+    padding: 1px;
+    background-color :#65799B;
+    margin-left: 0%;
   }
   ul{
     list-style: none
   }
   .pushmain{
-    margin-left: 100px;
+    margin-left: 0;
     transition: 0.5s;
   }
   .push{
-    width: 100px;
+    width: 0;
     background-color: rgb(255, 255, 255);
   }
   .sidenav a {
@@ -197,5 +195,10 @@ margin-left : 40%;
   }
   .todoform{
     margin-left : 10%;
+  }
+  .widthcard{
+    margin-top:30%;
+    margin-left : 2%;
+    width:95%;
   }
 }

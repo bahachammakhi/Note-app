@@ -38,36 +38,40 @@ class NoteForm extends Component{
     render(){
         return(
            <div>
-                <div className="md-form">
-                      <label for="textInput" className="text-danger" >Note title</label>
+                <div className="from-group mt-3">
+                     
        <input type="text" 
        className="form-control" 
        aria-label="Sizing example input"
         aria-describedby="inputGroup-sizing-default"
         value={this.state.newNoteTitle}
         onChange={this.handleUserInput}
+         placeholder="Note Title"
         name="newNoteTitle"
         />
                 </div>
        
         
        
-         <div className="md-form ">
-         <label for="textarea" className="text-danger" >Note body</label>
+         <div className="from-group mt-3 mb-3">
          <textarea type="text"
-        className="form-control row md-textarea" 
+        className="form-control" 
         aria-label="Sizing example input" 
         aria-describedby="inputGroup-sizing-default"
         name="newNotePrag"
         onChange= {this.handleUserInput}
+        placeholder="Note Form"
         value={this.state.newNotePrag}
         />
-        <button type="submit" 
-     className="btn btn-outline-danger"
+        <div className="text-center mt-5">
+            <button type="submit" 
+     className="btn btn-dark"
      onClick={this.writeNote}
      >Add Note
      
      </button>
+        </div>
+        
        
          </div>
            </div>
