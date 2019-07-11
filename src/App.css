@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
-.body{
-  background-color:#65799B;
- font-family: 'Raleway', sans-serif;
+@import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
+.body {
+  background-color: #65799b;
+  font-family: "Raleway", sans-serif;
 }
 .sticky-footer {
   position: relative;
@@ -10,26 +10,25 @@
   width: 100%;
   text-align: center;
 }
-.signinrigth{
+.signinrigth {
   background-color: #70acb1;
 }
-.singinleft{
+.singinleft {
   background-color: #c6f1e7;
 }
-.widthcard{
-  width:50%;
-  margin-left : 25%;
+.widthcard {
+  width: 50%;
+  margin-left: 25%;
   margin-top: 5%;
 }
-.center{
+.center {
   float: none;
   margin: 0 auto;
 }
-.margin-bottom{
-  margin-bottom:  35%;
+.margin-bottom {
+  margin-bottom: 35%;
 }
 footer {
-  
   left: 0;
   bottom: 0;
   width: 100%;
@@ -37,39 +36,36 @@ footer {
   color: white;
   text-align: center;
 }
-.todoform{
-  width : 100%;
+.todoform {
+  width: 100%;
   margin-left: 25%;
   margin-right: 10%;
 }
-.modall{
-margin-left : 40%;
-margin-top: 7%;
+.modall {
+  margin-left: 40%;
+  margin-top: 7%;
 }
-.card{
+.card {
   width: 18rem;
 }
-.permission{
-  margin-top: 20% ;
+.permission {
+  margin-top: 20%;
 }
-.btnpermission{
-  margin-left : 47%;
+.btnpermission {
+  margin-left: 47%;
 }
 .stickybtn {
   position: fixed;
-    bottom: 1%;
-    right: 40%;
+  bottom: 1%;
+  right: 40%;
 }
 /* side nav collapsed */
 .sidenav {
- 
   width: 0px; /* 0 width - change this with JavaScript */
   position: fixed; /* Stay in place */
   z-index: 1; /* Stay on top */
 
- 
   overflow-x: hidden; /* Disable horizontal scroll */
-
 }
 .sidenav a {
   padding: 2px 25px 2px 2px;
@@ -82,59 +78,63 @@ margin-top: 7%;
 
 /* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
- background-color: #65799B
+  background-color: #65799b;
 }
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 .notePage {
-  transition: margin-left .5s;
+  transition: margin-left 0.5s;
   padding: 20px;
   background-color: black;
 }
-.margin-{
+.margin- {
   margin-top: -60px;
 }
-.far{
+.far {
   cursor: pointer;
 }
 
-.far:hover{
-  color : red
+.far:hover {
+  color: red;
 }
-.todolist{
-  margin-top : 50px;
-  transition: margin-left .5s;
+.todolist {
+  margin-top: 50px;
+  transition: margin-left 0.5s;
   padding: 20px;
   margin-left: 22%;
   margin-right: 0%;
 }
 
-.md-form textarea[type=text]:focus:not([readonly]) + label {
-  color: rgb(255, 255, 255); }
-  .md-form textarea[type=text]:focus:not([readonly]) {
+.md-form textarea[type="text"]:focus:not([readonly]) + label {
+  color: rgb(255, 255, 255);
+}
+.md-form textarea[type="text"]:focus:not([readonly]) {
   box-shadow: 0 1px 0 0 rgb(255, 255, 255);
-  border-bottom: 1px solid rgb(255, 255, 255); }
-  
-  .md-form input[type=text]:focus:not([readonly]) + label {
-    color: rgb(255, 255, 255); }
-    .md-form input[type=text]:focus:not([readonly]) {
-    box-shadow: 0 1px 0 0 rgb(255, 255, 255);
-    border-bottom: 1px solid rgb(255, 255, 255); }
-    
+  border-bottom: 1px solid rgb(255, 255, 255);
+}
+
+.md-form input[type="text"]:focus:not([readonly]) + label {
+  color: rgb(255, 255, 255);
+}
+.md-form input[type="text"]:focus:not([readonly]) {
+  box-shadow: 0 1px 0 0 rgb(255, 255, 255);
+  border-bottom: 1px solid rgb(255, 255, 255);
+}
+
 /* class for collapse */
-.push{
+.push {
   height: 100%; /* 100% Full-height */
   width: 250px; /* 250 width - change this with JavaScript */
   position: fixed; /* Stay in place */
   z-index: 1; /* Stay on top */
-top: 0; /* Stay at the top */
+  top: 0; /* Stay at the top */
   left: 0;
   background-color: #59606d; /* Black*/
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 60px; /* Place content 60px from the top */
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
 }
-.pushmain{
+.pushmain {
   margin-left: 250px;
   transition: 0.5s;
 }
@@ -142,39 +142,38 @@ top: 0; /* Stay at the top */
   border-left: 3px solid rgb(8, 8, 8);
   height: 200px;
 }
-.edit:hover{
- color: rgb(214, 98, 98);
- cursor: pointer;
-   }
-
-.bg-navbar{
-  background-color:#59606D;
+.edit:hover {
+  color: rgb(214, 98, 98);
+  cursor: pointer;
 }
-.cursor{
+
+.bg-navbar {
+  background-color: #59606d;
+}
+.cursor {
   cursor: pointer;
 }
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-width: 800px) {
- 
-  .modall{
+  .modall {
     margin-left: 10%;
     width: 60%;
     height: 50%;
   }
-  .todolist{
-    transition: margin-left .5s;
+  .todolist {
+    transition: margin-left 0.5s;
     padding: 1px;
-    background-color :#65799B;
+    background-color: #65799b;
     margin-left: 10%;
   }
-  ul{
-    list-style: none
+  ul {
+    list-style: none;
   }
-  .pushmain{
+  .pushmain {
     margin-left: 0;
     transition: 0.5s;
   }
-  .push{
+  .push {
     width: 0;
     background-color: rgb(255, 255, 255);
   }
@@ -186,33 +185,33 @@ top: 0; /* Stay at the top */
     display: block;
     transition: 0.3s;
   }
-  .modall{
-   margin-left: 20%;
-   margin-top: 25%;
-   padding-bottom: 65%;
+  .modall {
+    margin-left: 20%;
+    margin-top: 25%;
+    padding-bottom: 65%;
   }
-  .w-25{
+  .w-25 {
     width: 75%;
   }
-  .cursor{
+  .cursor {
     cursor: pointer;
   }
-  .text-mobile{
+  .text-mobile {
     font-size: 20px;
   }
-  .todoform{
-    margin-left : 10%;
+  .todoform {
+    margin-left: 10%;
   }
-  .widthcard{
-    margin-top:30%;
-    margin-left : 2%;
-    width:95%;
+  .widthcard {
+    margin-top: 30%;
+    margin-left: 2%;
+    width: 95%;
   }
-  .mobile{
+  .mobile {
     font-size: 20px;
   }
-  .mobiletext{
-    font-size : 15px;
+  .mobiletext {
+    font-size: 15px;
   }
   .notemobile {
     margin-left: 20%;
