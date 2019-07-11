@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+.body{
+  background-color:#65799B;
+ font-family: 'Raleway', sans-serif;
+}
 .sticky-footer {
   position: relative;
   left: 0;
@@ -101,7 +106,7 @@ margin-top: 7%;
   transition: margin-left .5s;
   padding: 20px;
   margin-left: 22%;
-  margin-right: 10%;
+  margin-right: 0%;
 }
 
 .md-form textarea[type=text]:focus:not([readonly]) + label {
@@ -141,8 +146,9 @@ top: 0; /* Stay at the top */
  color: rgb(214, 98, 98);
  cursor: pointer;
    }
-.body{
-  background-color:#65799B;
+
+.bg-navbar{
+  background-color:#59606D;
 }
 .cursor{
   cursor: pointer;
@@ -159,7 +165,7 @@ top: 0; /* Stay at the top */
     transition: margin-left .5s;
     padding: 1px;
     background-color :#65799B;
-    margin-left: 0%;
+    margin-left: 10%;
   }
   ul{
     list-style: none
@@ -183,6 +189,7 @@ top: 0; /* Stay at the top */
   .modall{
    margin-left: 20%;
    margin-top: 25%;
+   padding-bottom: 65%;
   }
   .w-25{
     width: 75%;
@@ -200,5 +207,14 @@ top: 0; /* Stay at the top */
     margin-top:30%;
     margin-left : 2%;
     width:95%;
+  }
+  .mobile{
+    font-size: 20px;
+  }
+  .mobiletext{
+    font-size : 15px;
+  }
+  .notemobile {
+    margin-left: 20%;
   }
 }

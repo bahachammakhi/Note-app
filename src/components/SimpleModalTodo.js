@@ -48,10 +48,10 @@ render(){
       
           <div className="card   modall mt-5 ">
           <div className="md-form form  ml-3 mr-3 mb-5 mt-5" >
-          <label for="form1" className="text-dark" >TodoContent</label>
+          <label for="form1" className="text-dark" >Aaaa</label>
          <input type="text" 
     id="form1"
-       className="form-control form-control-sm mt-5" 
+       className="form-control form-control-sm " 
        aria-label="Sizing example input"
         aria-describedby="inputGroup-sizing-default"
         value={this.state.newTodoContent}

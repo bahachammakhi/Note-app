@@ -35,16 +35,11 @@ render(){
           <span >&times;</span>
         </button>
       </div>
-       <div className="d-flex justify-content-center">
+       <div className="d-flex justify-content-center mb-3">
           <NoteForm  addNote={this.props.addNote} />
        </div>
          
         </div>
-       
-        
-
-   
-        
       </Modal>
     </div>
     

@@ -62,8 +62,8 @@ class NoteForm extends Component{
         onChange= {this.handleUserInput}
         placeholder="Note Form"
         value={this.state.newNotePrag}
-        />
-        <div className="text-center mt-5">
+        /></div>
+        <div className="text-center mt-5 mb-5 ">
             <button type="submit" 
      className="btn btn-dark"
      onClick={this.writeNote}
@@ -73,7 +73,7 @@ class NoteForm extends Component{
         </div>
         
        
-         </div>
+         
            </div>
                
    

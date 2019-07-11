@@ -19,7 +19,7 @@ class TodoList extends Component{
                           <div className=" w-75 " >
  
                 <div className="row ml-5" > <i class="far fa-circle  mr-3 text-white"  onClick={() => this.props.removetodo(this.props.todoId)} ></i><h6 className="text-white" >{this.props.todoContent}</h6>  <i class="fas fa-edit ml-3 edit text-white" onClick={()=>{this.setState({open:true})}}  ></i></div>
-                <hr className="bg-white" />
+                <hr className="bg-white w-100" />
                
             </div>  
             </div>

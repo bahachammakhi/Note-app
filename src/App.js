@@ -255,22 +255,18 @@ logout=()=>{
       )
     })
     //signin page
-   
-
     const loading = <div className="spinner-border"></div>
 
-    const AfficheNote = this.state.loadingnote ? <div className="card-columns" > {noteitem}</div>  : loading 
+    const AfficheNote = this.state.loadingnote ? <div className="card-columns notemobile" > {noteitem}</div>  : loading 
 
     const AfficheTodo = this.state.loadingtodo ? <div className="list-group list-group-flush" > {todoItem}</div>  : loading 
     //main of the page
     const main =  <div className="body">
       <div className="d-block d-sm-none"><NavBar note={this.handleNoteComponent} todo={this.handleTodoComponent} profilepic={this.state.userpic} username={this.state.username} signout={this.logout} /></div>
     <div className="sidenav" >  
-    
- <SideNav openNav={this.state.openNav}  note={this.handleNoteComponent} todo={this.handleTodoComponent} profilepic={this.state.userpic} username={this.state.username} signout={this.logout} />
+    <SideNav openNav={this.state.openNav}  note={this.handleNoteComponent} todo={this.handleTodoComponent} profilepic={this.state.userpic} username={this.state.username} signout={this.logout} />
    </div> 
   <UnmountClosed isOpened={this.state.noteO}>
-   
    <div className="notePage"  className={this.state.main}  >
    <div className="container">
     <div className="row " >
@@ -280,24 +276,16 @@ logout=()=>{
       <div className="d-flex justify-content-center   mt-3" >
       <WelcomeHeader username={this.state.username} />
       </div>
-
-       {AfficheNote }
+{AfficheNote }
     </div>
     </div>
-
-    
-     
 <div className="stickybtn "> 
          <button
        className="btn btn-white border rounded-circle mb-3" 
        onClick={()=>{this.setState({open:true})}} 
        ><i className="fas fa-plus"></i>
        </button>
-   
-
       </div>
-      
-   
    </div>
    </UnmountClosed>
    <UnmountClosed isOpened={this.state.todoOpen} >
@@ -310,11 +298,7 @@ logout=()=>{
 <div className="todolist margin-bottom ">
 {AfficheTodo}
 </div>
- 
-     </div>
-
- 
- 
+  </div>
    </div>
    </UnmountClosed>
   </div> 
@@ -322,11 +306,7 @@ logout=()=>{
       <div>
         {this.state.isSignedIn ? main : <div className="d-flex justify-content-center   mr-2 widthcard"> <SignIn /></div>}
         </div> 
-    
-     
-        
-     
-    );
+      );
   }
 }
 
