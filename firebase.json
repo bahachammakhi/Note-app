@@ -4,6 +4,7 @@
   },
   "hosting": {
     "public": "build",
+    "site": "note-tasks",
     
     "ignore": [
       "firebase.json",
