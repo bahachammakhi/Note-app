@@ -1,7 +1,7 @@
 import firebase from "firebase"
 var config = {
     apiKey: "AIzaSyC6OH3f6TD-y3XIcRk2zQWQ2J64DaZpU5I",
-    authDomain: "note-tasks.web.app",
+    authDomain: "my-note-app-8edfd.firebaseapp.com",
     databaseURL: "https://my-note-app-8edfd.firebaseio.com",
     projectId: "my-note-app-8edfd",
     storageBucket: "my-note-app-8edfd.appspot.com",
